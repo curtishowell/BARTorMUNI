@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FFF69DB418DFAE9900A5A80D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB318DFAE9900A5A80D /* Foundation.framework */; };
+		FFF69DB618DFAE9900A5A80D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */; };
+		FFF69DB818DFAE9900A5A80D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB718DFAE9900A5A80D /* UIKit.framework */; };
+		FFF69DBE18DFAE9900A5A80D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DBC18DFAE9900A5A80D /* InfoPlist.strings */; };
+		FFF69DC018DFAE9900A5A80D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DBF18DFAE9900A5A80D /* main.m */; };
+		FFF69DC418DFAE9900A5A80D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DC318DFAE9900A5A80D /* AppDelegate.m */; };
+		FFF69DC718DFAE9900A5A80D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DC618DFAE9900A5A80D /* RootViewController.m */; };
+		FFF69DCA18DFAE9900A5A80D /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DC918DFAE9900A5A80D /* DataViewController.m */; };
+		FFF69DCD18DFAE9900A5A80D /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DCC18DFAE9900A5A80D /* ModelController.m */; };
+		FFF69DD018DFAE9900A5A80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DCE18DFAE9900A5A80D /* Main.storyboard */; };
+		FFF69DD218DFAE9900A5A80D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DD118DFAE9900A5A80D /* Images.xcassets */; };
+		FFF69DD918DFAE9900A5A80D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DD818DFAE9900A5A80D /* XCTest.framework */; };
+		FFF69DDA18DFAE9900A5A80D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB318DFAE9900A5A80D /* Foundation.framework */; };
+		FFF69DDB18DFAE9900A5A80D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB718DFAE9900A5A80D /* UIKit.framework */; };
+		FFF69DE318DFAE9900A5A80D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DE118DFAE9900A5A80D /* InfoPlist.strings */; };
+		FFF69DE518DFAE9900A5A80D /* BARTorMUNITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DE418DFAE9900A5A80D /* BARTorMUNITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFF69DDC18DFAE9900A5A80D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFF69DA818DFAE9900A5A80D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFF69DAF18DFAE9900A5A80D;
+			remoteInfo = BARTorMUNI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FFF69DB018DFAE9900A5A80D /* BARTorMUNI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BARTorMUNI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFF69DB318DFAE9900A5A80D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FFF69DB718DFAE9900A5A80D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FFF69DBB18DFAE9900A5A80D /* BARTorMUNI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BARTorMUNI-Info.plist"; sourceTree = "<group>"; };
+		FFF69DBD18DFAE9900A5A80D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFF69DBF18DFAE9900A5A80D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FFF69DC118DFAE9900A5A80D /* BARTorMUNI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BARTorMUNI-Prefix.pch"; sourceTree = "<group>"; };
+		FFF69DC218DFAE9900A5A80D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FFF69DC318DFAE9900A5A80D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FFF69DC518DFAE9900A5A80D /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		FFF69DC618DFAE9900A5A80D /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		FFF69DC818DFAE9900A5A80D /* DataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		FFF69DC918DFAE9900A5A80D /* DataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		FFF69DCB18DFAE9900A5A80D /* ModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
+		FFF69DCC18DFAE9900A5A80D /* ModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
+		FFF69DCF18DFAE9900A5A80D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFF69DD118DFAE9900A5A80D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FFF69DD718DFAE9900A5A80D /* BARTorMUNITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BARTorMUNITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFF69DD818DFAE9900A5A80D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FFF69DE018DFAE9900A5A80D /* BARTorMUNITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BARTorMUNITests-Info.plist"; sourceTree = "<group>"; };
+		FFF69DE218DFAE9900A5A80D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FFF69DE418DFAE9900A5A80D /* BARTorMUNITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BARTorMUNITests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFF69DAD18DFAE9900A5A80D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DB618DFAE9900A5A80D /* CoreGraphics.framework in Frameworks */,
+				FFF69DB818DFAE9900A5A80D /* UIKit.framework in Frameworks */,
+				FFF69DB418DFAE9900A5A80D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFF69DD418DFAE9900A5A80D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DD918DFAE9900A5A80D /* XCTest.framework in Frameworks */,
+				FFF69DDB18DFAE9900A5A80D /* UIKit.framework in Frameworks */,
+				FFF69DDA18DFAE9900A5A80D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFF69DA718DFAE9900A5A80D = {
+			isa = PBXGroup;
+			children = (
+				FFF69DB918DFAE9900A5A80D /* BARTorMUNI */,
+				FFF69DDE18DFAE9900A5A80D /* BARTorMUNITests */,
+				FFF69DB218DFAE9900A5A80D /* Frameworks */,
+				FFF69DB118DFAE9900A5A80D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFF69DB118DFAE9900A5A80D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DB018DFAE9900A5A80D /* BARTorMUNI.app */,
+				FFF69DD718DFAE9900A5A80D /* BARTorMUNITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFF69DB218DFAE9900A5A80D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DB318DFAE9900A5A80D /* Foundation.framework */,
+				FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */,
+				FFF69DB718DFAE9900A5A80D /* UIKit.framework */,
+				FFF69DD818DFAE9900A5A80D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFF69DB918DFAE9900A5A80D /* BARTorMUNI */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DC218DFAE9900A5A80D /* AppDelegate.h */,
+				FFF69DC318DFAE9900A5A80D /* AppDelegate.m */,
+				FFF69DC518DFAE9900A5A80D /* RootViewController.h */,
+				FFF69DC618DFAE9900A5A80D /* RootViewController.m */,
+				FFF69DC818DFAE9900A5A80D /* DataViewController.h */,
+				FFF69DC918DFAE9900A5A80D /* DataViewController.m */,
+				FFF69DCB18DFAE9900A5A80D /* ModelController.h */,
+				FFF69DCC18DFAE9900A5A80D /* ModelController.m */,
+				FFF69DCE18DFAE9900A5A80D /* Main.storyboard */,
+				FFF69DD118DFAE9900A5A80D /* Images.xcassets */,
+				FFF69DBA18DFAE9900A5A80D /* Supporting Files */,
+			);
+			path = BARTorMUNI;
+			sourceTree = "<group>";
+		};
+		FFF69DBA18DFAE9900A5A80D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DBB18DFAE9900A5A80D /* BARTorMUNI-Info.plist */,
+				FFF69DBC18DFAE9900A5A80D /* InfoPlist.strings */,
+				FFF69DBF18DFAE9900A5A80D /* main.m */,
+				FFF69DC118DFAE9900A5A80D /* BARTorMUNI-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FFF69DDE18DFAE9900A5A80D /* BARTorMUNITests */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DE418DFAE9900A5A80D /* BARTorMUNITests.m */,
+				FFF69DDF18DFAE9900A5A80D /* Supporting Files */,
+			);
+			path = BARTorMUNITests;
+			sourceTree = "<group>";
+		};
+		FFF69DDF18DFAE9900A5A80D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DE018DFAE9900A5A80D /* BARTorMUNITests-Info.plist */,
+				FFF69DE118DFAE9900A5A80D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFF69DAF18DFAE9900A5A80D /* BARTorMUNI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFF69DE818DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNI" */;
+			buildPhases = (
+				FFF69DAC18DFAE9900A5A80D /* Sources */,
+				FFF69DAD18DFAE9900A5A80D /* Frameworks */,
+				FFF69DAE18DFAE9900A5A80D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BARTorMUNI;
+			productName = BARTorMUNI;
+			productReference = FFF69DB018DFAE9900A5A80D /* BARTorMUNI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FFF69DD618DFAE9900A5A80D /* BARTorMUNITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFF69DEB18DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNITests" */;
+			buildPhases = (
+				FFF69DD318DFAE9900A5A80D /* Sources */,
+				FFF69DD418DFAE9900A5A80D /* Frameworks */,
+				FFF69DD518DFAE9900A5A80D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFF69DDD18DFAE9900A5A80D /* PBXTargetDependency */,
+			);
+			name = BARTorMUNITests;
+			productName = BARTorMUNITests;
+			productReference = FFF69DD718DFAE9900A5A80D /* BARTorMUNITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFF69DA818DFAE9900A5A80D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Curtis Howell";
+				TargetAttributes = {
+					FFF69DD618DFAE9900A5A80D = {
+						TestTargetID = FFF69DAF18DFAE9900A5A80D;
+					};
+				};
+			};
+			buildConfigurationList = FFF69DAB18DFAE9900A5A80D /* Build configuration list for PBXProject "BARTorMUNI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFF69DA718DFAE9900A5A80D;
+			productRefGroup = FFF69DB118DFAE9900A5A80D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFF69DAF18DFAE9900A5A80D /* BARTorMUNI */,
+				FFF69DD618DFAE9900A5A80D /* BARTorMUNITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFF69DAE18DFAE9900A5A80D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DD218DFAE9900A5A80D /* Images.xcassets in Resources */,
+				FFF69DBE18DFAE9900A5A80D /* InfoPlist.strings in Resources */,
+				FFF69DD018DFAE9900A5A80D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFF69DD518DFAE9900A5A80D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DE318DFAE9900A5A80D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFF69DAC18DFAE9900A5A80D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DCA18DFAE9900A5A80D /* DataViewController.m in Sources */,
+				FFF69DC418DFAE9900A5A80D /* AppDelegate.m in Sources */,
+				FFF69DCD18DFAE9900A5A80D /* ModelController.m in Sources */,
+				FFF69DC018DFAE9900A5A80D /* main.m in Sources */,
+				FFF69DC718DFAE9900A5A80D /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFF69DD318DFAE9900A5A80D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFF69DE518DFAE9900A5A80D /* BARTorMUNITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFF69DDD18DFAE9900A5A80D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFF69DAF18DFAE9900A5A80D /* BARTorMUNI */;
+			targetProxy = FFF69DDC18DFAE9900A5A80D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FFF69DBC18DFAE9900A5A80D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFF69DBD18DFAE9900A5A80D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FFF69DCE18DFAE9900A5A80D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFF69DCF18DFAE9900A5A80D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FFF69DE118DFAE9900A5A80D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFF69DE218DFAE9900A5A80D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFF69DE618DFAE9900A5A80D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FFF69DE718DFAE9900A5A80D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFF69DE918DFAE9900A5A80D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BARTorMUNI/BARTorMUNI-Prefix.pch";
+				INFOPLIST_FILE = "BARTorMUNI/BARTorMUNI-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FFF69DEA18DFAE9900A5A80D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BARTorMUNI/BARTorMUNI-Prefix.pch";
+				INFOPLIST_FILE = "BARTorMUNI/BARTorMUNI-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FFF69DEC18DFAE9900A5A80D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BARTorMUNI.app/BARTorMUNI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BARTorMUNI/BARTorMUNI-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BARTorMUNITests/BARTorMUNITests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FFF69DED18DFAE9900A5A80D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BARTorMUNI.app/BARTorMUNI";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BARTorMUNI/BARTorMUNI-Prefix.pch";
+				INFOPLIST_FILE = "BARTorMUNITests/BARTorMUNITests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFF69DAB18DFAE9900A5A80D /* Build configuration list for PBXProject "BARTorMUNI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFF69DE618DFAE9900A5A80D /* Debug */,
+				FFF69DE718DFAE9900A5A80D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFF69DE818DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFF69DE918DFAE9900A5A80D /* Debug */,
+				FFF69DEA18DFAE9900A5A80D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FFF69DEB18DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFF69DEC18DFAE9900A5A80D /* Debug */,
+				FFF69DED18DFAE9900A5A80D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFF69DA818DFAE9900A5A80D /* Project object */;
+}
