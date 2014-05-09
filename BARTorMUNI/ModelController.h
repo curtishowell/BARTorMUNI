@@ -1,8 +1,8 @@
 //
 //  ModelController.h
-//  BARTorMUNI
+//  PageStarter
 //
-//  Created by Curtis Howell on 3/23/14.
+//  Created by Curtis Howell on 2/28/14.
 //  Copyright (c) 2014 Curtis Howell. All rights reserved.
 //
 
@@ -14,5 +14,8 @@
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController;
+
+@property (weak, nonatomic) UIPageControl *pageControl;
+@property (weak, nonatomic) UIImageView *pageControlNearby;
 
 @end

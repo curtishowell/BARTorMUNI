@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Station_name</key>
+		<string>Civic Center</string>
+		<key>MUNI_outbound</key>
+		<string>16997</string>
+		<key>MUNI_inbound</key>
+		<string>15727</string>
+		<key>BART_key</key>
+		<string>CIVC</string>
+	</dict>
+	<dict>
+		<key>Station_name</key>
+		<string>Powell</string>
+		<key>MUNI_outbound</key>
+		<string>16995</string>
+		<key>MUNI_inbound</key>
+		<string>15417</string>
+		<key>BART_key</key>
+		<string>POWL</string>
+	</dict>
+	<dict>
+		<key>Station_name</key>
+		<string>Montgomery</string>
+		<key>MUNI_outbound</key>
+		<string>16994</string>
+		<key>MUNI_inbound</key>
+		<string>15731</string>
+		<key>BART_key</key>
+		<string>MONT</string>
+	</dict>
+	<dict>
+		<key>Station_name</key>
+		<string>Embarcadero</string>
+		<key>MUNI_outbound</key>
+		<string>17217</string>
+		<key>MUNI_inbound</key>
+		<string>16992</string>
+		<key>BART_key</key>
+		<string>EMBR</string>
+	</dict>
+</array>
+</plist>

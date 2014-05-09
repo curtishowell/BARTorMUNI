@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32B01B509F8146A08A907085 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1875115F514C1089AA7199 /* libPods.a */; };
+		FF31CD74190339E40064BC58 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF31CD73190339E40064BC58 /* Stations.plist */; };
+		FF31CD771906331D0064BC58 /* Arrival.m in Sources */ = {isa = PBXBuildFile; fileRef = FF31CD761906331D0064BC58 /* Arrival.m */; };
 		FFF69DB418DFAE9900A5A80D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB318DFAE9900A5A80D /* Foundation.framework */; };
 		FFF69DB618DFAE9900A5A80D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */; };
 		FFF69DB818DFAE9900A5A80D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB718DFAE9900A5A80D /* UIKit.framework */; };
@@ -23,6 +26,10 @@
 		FFF69DDB18DFAE9900A5A80D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB718DFAE9900A5A80D /* UIKit.framework */; };
 		FFF69DE318DFAE9900A5A80D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DE118DFAE9900A5A80D /* InfoPlist.strings */; };
 		FFF69DE518DFAE9900A5A80D /* BARTorMUNITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DE418DFAE9900A5A80D /* BARTorMUNITests.m */; };
+		FFF69DF018DFAEFA00A5A80D /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF69DEF18DFAEFA00A5A80D /* Station.m */; };
+		FFF69DF518DFB10B00A5A80D /* direction_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DF218DFB10B00A5A80D /* direction_arrow.png */; };
+		FFF69DF618DFB10B00A5A80D /* selected_location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DF318DFB10B00A5A80D /* selected_location.jpg */; };
+		FFF69DF718DFB10B00A5A80D /* unselected_location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FFF69DF418DFB10B00A5A80D /* unselected_location.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F88300FB4784FD58C230CAB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		FF1875115F514C1089AA7199 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF31CD73190339E40064BC58 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
+		FF31CD751906331D0064BC58 /* Arrival.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrival.h; sourceTree = "<group>"; };
+		FF31CD761906331D0064BC58 /* Arrival.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrival.m; sourceTree = "<group>"; };
 		FFF69DB018DFAE9900A5A80D /* BARTorMUNI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BARTorMUNI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF69DB318DFAE9900A5A80D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,6 +71,11 @@
 		FFF69DE018DFAE9900A5A80D /* BARTorMUNITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BARTorMUNITests-Info.plist"; sourceTree = "<group>"; };
 		FFF69DE218DFAE9900A5A80D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FFF69DE418DFAE9900A5A80D /* BARTorMUNITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BARTorMUNITests.m; sourceTree = "<group>"; };
+		FFF69DEE18DFAEFA00A5A80D /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Station.h; sourceTree = "<group>"; };
+		FFF69DEF18DFAEFA00A5A80D /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Station.m; sourceTree = "<group>"; };
+		FFF69DF218DFB10B00A5A80D /* direction_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = direction_arrow.png; sourceTree = "<group>"; };
+		FFF69DF318DFB10B00A5A80D /* selected_location.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = selected_location.jpg; sourceTree = "<group>"; };
+		FFF69DF418DFB10B00A5A80D /* unselected_location.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unselected_location.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +86,7 @@
 				FFF69DB618DFAE9900A5A80D /* CoreGraphics.framework in Frameworks */,
 				FFF69DB818DFAE9900A5A80D /* UIKit.framework in Frameworks */,
 				FFF69DB418DFAE9900A5A80D /* Foundation.framework in Frameworks */,
+				32B01B509F8146A08A907085 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +110,7 @@
 				FFF69DDE18DFAE9900A5A80D /* BARTorMUNITests */,
 				FFF69DB218DFAE9900A5A80D /* Frameworks */,
 				FFF69DB118DFAE9900A5A80D /* Products */,
+				5F88300FB4784FD58C230CAB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +130,7 @@
 				FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */,
 				FFF69DB718DFAE9900A5A80D /* UIKit.framework */,
 				FFF69DD818DFAE9900A5A80D /* XCTest.framework */,
+				FF1875115F514C1089AA7199 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,10 +144,16 @@
 				FFF69DC618DFAE9900A5A80D /* RootViewController.m */,
 				FFF69DC818DFAE9900A5A80D /* DataViewController.h */,
 				FFF69DC918DFAE9900A5A80D /* DataViewController.m */,
+				FFF69DEE18DFAEFA00A5A80D /* Station.h */,
+				FFF69DEF18DFAEFA00A5A80D /* Station.m */,
 				FFF69DCB18DFAE9900A5A80D /* ModelController.h */,
 				FFF69DCC18DFAE9900A5A80D /* ModelController.m */,
 				FFF69DCE18DFAE9900A5A80D /* Main.storyboard */,
+				FF31CD751906331D0064BC58 /* Arrival.h */,
+				FF31CD761906331D0064BC58 /* Arrival.m */,
+				FF31CD73190339E40064BC58 /* Stations.plist */,
 				FFF69DD118DFAE9900A5A80D /* Images.xcassets */,
+				FFF69DF118DFB10B00A5A80D /* Images */,
 				FFF69DBA18DFAE9900A5A80D /* Supporting Files */,
 			);
 			path = BARTorMUNI;
@@ -162,6 +188,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FFF69DF118DFB10B00A5A80D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FFF69DF218DFB10B00A5A80D /* direction_arrow.png */,
+				FFF69DF318DFB10B00A5A80D /* selected_location.jpg */,
+				FFF69DF418DFB10B00A5A80D /* unselected_location.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFF69DE818DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNI" */;
 			buildPhases = (
+				0F1AC5F86DAE419B98A3E808 /* Check Pods Manifest.lock */,
 				FFF69DAC18DFAE9900A5A80D /* Sources */,
 				FFF69DAD18DFAE9900A5A80D /* Frameworks */,
 				FFF69DAE18DFAE9900A5A80D /* Resources */,
+				A9C329DBAAB1430F8DD18F51 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,8 +276,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF69DF618DFB10B00A5A80D /* selected_location.jpg in Resources */,
 				FFF69DD218DFAE9900A5A80D /* Images.xcassets in Resources */,
+				FFF69DF518DFB10B00A5A80D /* direction_arrow.png in Resources */,
 				FFF69DBE18DFAE9900A5A80D /* InfoPlist.strings in Resources */,
+				FFF69DF718DFB10B00A5A80D /* unselected_location.jpg in Resources */,
+				FF31CD74190339E40064BC58 /* Stations.plist in Resources */,
 				FFF69DD018DFAE9900A5A80D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +296,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F1AC5F86DAE419B98A3E808 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9C329DBAAB1430F8DD18F51 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFF69DAC18DFAE9900A5A80D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -261,9 +336,11 @@
 			files = (
 				FFF69DCA18DFAE9900A5A80D /* DataViewController.m in Sources */,
 				FFF69DC418DFAE9900A5A80D /* AppDelegate.m in Sources */,
+				FFF69DF018DFAEFA00A5A80D /* Station.m in Sources */,
 				FFF69DCD18DFAE9900A5A80D /* ModelController.m in Sources */,
 				FFF69DC018DFAE9900A5A80D /* main.m in Sources */,
 				FFF69DC718DFAE9900A5A80D /* RootViewController.m in Sources */,
+				FF31CD771906331D0064BC58 /* Arrival.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +462,7 @@
 		};
 		FFF69DE918DFAE9900A5A80D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F88300FB4784FD58C230CAB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -398,6 +476,7 @@
 		};
 		FFF69DEA18DFAE9900A5A80D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F88300FB4784FD58C230CAB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -468,6 +547,7 @@
 				FFF69DEA18DFAE9900A5A80D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFF69DEB18DFAE9900A5A80D /* Build configuration list for PBXNativeTarget "BARTorMUNITests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +556,7 @@
 				FFF69DED18DFAE9900A5A80D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

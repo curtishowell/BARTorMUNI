@@ -1,8 +1,8 @@
 //
 //  ModelController.m
-//  BARTorMUNI
+//  PageStarter
 //
-//  Created by Curtis Howell on 3/23/14.
+//  Created by Curtis Howell on 2/28/14.
 //  Copyright (c) 2014 Curtis Howell. All rights reserved.
 //
 
@@ -29,15 +29,35 @@
 {
     self = [super init];
     if (self) {
-        // Create the data model.
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        _pageData = [[dateFormatter monthSymbols] copy];
+        NSArray *stations = [self readStations];
+        NSMutableArray *stationBuildup = [[NSMutableArray alloc] init];
+        
+        for(int i = 0; i < [stations count]; i ++) {
+            NSDictionary *station = stations[i];
+            Station *s = [[Station alloc] init];
+            s.stationIndex = [NSNumber numberWithInteger:i];
+            s.name = [station objectForKey:@"Station_name"];
+            s.BARTkey = [station objectForKey:@"BART_key"];
+            s.MUNIinbound = [station objectForKey:@"MUNI_inbound"];
+            s.MUNIoutbound = [station objectForKey:@"MUNI_outbound"];
+            [stationBuildup addObject:s];
+        }
+
+
+//        NSArray *stationNames = @[@"Nearby", @"Civic Center", @"Powell", @"Montgomery", @"Embarcadero"];
+//        for(int i = 0; i < [stationNames count]; i++){
+//            Station *s = [[Station alloc] init];
+//            s.name = stationNames[i];
+//            s.stationIndex = [NSNumber numberWithInt:i];
+//            [stationBuildup addObject:s];
+//        }
+        _pageData = stationBuildup;
     }
     return self;
 }
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard
-{   
+{
     // Return the data view controller for the given index.
     if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
         return nil;
@@ -45,15 +65,19 @@
     
     // Create a new view controller and pass suitable data.
     DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"DataViewController"];
-    dataViewController.dataObject = self.pageData[index];
+    dataViewController.station = self.pageData[index];
+    dataViewController.pageControl = self.pageControl;
+    dataViewController.pageControlNearby = self.pageControlNearby;
+    
     return dataViewController;
 }
 
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController
-{   
-     // Return the index of the given data view controller.
-     // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-    return [self.pageData indexOfObject:viewController.dataObject];
+{
+    // Return the index of the given data view controller.
+    // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
+    return [self.pageData indexOfObject:viewController.station];
+    //TODO: can just return index form dataObject instead of looking up index in array
 }
 
 #pragma mark - Page View Controller Data Source
@@ -81,6 +105,19 @@
         return nil;
     }
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+}
+
+- (NSArray *)readStations
+{
+    NSArray *stations = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"]];
+    
+//    NSLog(@"%@",stations);
+//    
+//    for(NSDictionary *station in stations) {
+//        NSLog(@"%@", station);
+//    }
+    
+    return stations;
 }
 
 @end
