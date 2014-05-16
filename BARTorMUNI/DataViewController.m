@@ -19,9 +19,6 @@
 @property (nonatomic) BOOL visible;
 
 //XML parser
-@property(nonatomic, strong) NSMutableDictionary *currentDictionary;   // current section being parsed
-@property(nonatomic, strong) NSMutableDictionary *xmlWeather;          // completed parsed xml response
-
 @property(nonatomic, strong) NSString *BARTelementName;
 @property(nonatomic, strong) NSString *MUNIelementName;
 
@@ -48,6 +45,9 @@
                                              selector:@selector(directionChanged:)
                                                  name:@"directionChanged" object:nil];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,18 +94,31 @@
     }
 }
 
+//pull to refresh control
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [refreshControl endRefreshing];
+    
+    //only refresh if the data is not already being refreshed
+    if([self.arrivals count] > 0){
+        [self fetchNewData];
+    }
+}
+
 #pragma mark - table view
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell* cell = nil;
+    //no data, so just show an activity indicator
+    if([self.arrivals count] == 0){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"loading"];
+        UIActivityIndicatorView *activityIndicator = (UIActivityIndicatorView *)[cell viewWithTag:1];
+        [activityIndicator startAnimating];
+        return cell;
+    }
+    
     Arrival *arrival = self.arrivals[indexPath.row];
     
-    if(indexPath.row == 0){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"firstStop"];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"additionalStops"];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"stop"];
     
     NSString *minuteLabel = @" minutes";
     if([arrival.minutesUntilArrival intValue] < 2) {
@@ -126,12 +139,14 @@
     //# of minutes
     label = (UILabel *)[cell viewWithTag:2];
     label.text = [NSString stringWithFormat:@"%@", [arrival.minutesUntilArrival stringValue]];
-//    [label sizeToFit];
+    
+    if([label.text isEqualToString:@"(null)"]){
+        return cell;
+    }
     
     //minute or minutes
     label = (UILabel *)[cell viewWithTag:3];
     label.text = minuteLabel;
-//    [label sizeToFit];
 
     
     
@@ -140,7 +155,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.arrivals count];
+    return [self.arrivals count] > 0 ? [self.arrivals count] : 1;
 }
 
 #pragma mark - fetch data
@@ -148,6 +163,8 @@
 - (void)fetchNewData {
     
     self.nextArrivals = [NSMutableArray array];
+    self.arrivals = [NSArray array];
+    [self.tableView reloadData];
     
     BOOL inbound = [(AppDelegate *)([[UIApplication sharedApplication] delegate]) inbound];
     
@@ -237,26 +254,11 @@
     [operation start];
 }
 
-//- (void)parserDidStartDocument:(NSXMLParser *)parser
-//{
-//    if(parser == self.BARTparser) {
-//        self.xmlWeather = [NSMutableDictionary dictionary];
-//    } else if (parser == self.MUNIparser) {
-//        
-//    }
-//}
-
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
     if(parser == self.BARTparser) {
 
         self.BARTelementName = qName;
-        
-//        if([qName isEqualToString:@"station"] ||
-//           [qName isEqualToString:@"etd"] ||
-//           [qName isEqualToString:@"estimate"]) {
-//            self.currentDictionary = [NSMutableDictionary dictionary];
-//        }
         
         self.BARToutstring = [NSMutableString string];
         
@@ -286,74 +288,38 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-//    // 1
-//    if ([qName isEqualToString:@"current_condition"] ||
-//        [qName isEqualToString:@"request"]) {
-//        self.xmlWeather[qName] = @[self.currentDictionary];
-//        self.currentDictionary = nil;
-//    }
-//    // 2
-//    else if ([qName isEqualToString:@"weather"]) {
-//        
-//        // Initialize the list of weather items if it doesn't exist
-//        NSMutableArray *array = self.xmlWeather[@"weather"] ?: [NSMutableArray array];
-//        
-//        // Add the current weather object
-//        [array addObject:self.currentDictionary];
-//        
-//        // Set the new array to the "weather" key on xmlWeather dictionary
-//        self.xmlWeather[@"weather"] = array;
-//        
-//        self.currentDictionary = nil;
-//    }
-//    // 3
-//    else if ([qName isEqualToString:@"value"]) {
-//        // Ignore value tags, they only appear in the two conditions below
-//    }
-//    // 4
-//    else if ([qName isEqualToString:@"weatherDesc"] ||
-//             [qName isEqualToString:@"weatherIconUrl"]) {
-//        NSDictionary *dictionary = @{@"value": self.outstring};
-//        NSArray *array = @[dictionary];
-//        self.currentDictionary[qName] = array;
-//    }
-//    // 5
-//    else if (qName) {
-//        self.currentDictionary[qName] = self.outstring;
-//    }
-    
     if(parser == self.BARTparser) {
         if ([qName isEqualToString:@"minutes"]) {
-            //        self.currentDictionary[qName] = self.outstring;
-            Arrival *arrival = [[Arrival alloc] init];
             
             NSNumber *minutesUntilArrival = [self stringToInt:self.BARToutstring];
             
-            arrival.minutesUntilArrival = minutesUntilArrival;
-            arrival.stationType = StationTypeBART;
-            
-            [self.nextArrivals addObject:arrival];
+            if(minutesUntilArrival != nil){
+                Arrival *arrival = [[Arrival alloc] init];
+                arrival.minutesUntilArrival = minutesUntilArrival;
+                arrival.stationType = StationTypeBART;
+                
+                [self.nextArrivals addObject:arrival];
+            }
         }
         
         self.BARTelementName = nil;
         
     } else if(parser == self.MUNIparser) {
         if ([qName isEqualToString:@"DepartureTime"]) {
-            //        self.currentDictionary[qName] = self.outstring;
             Arrival *arrival = [[Arrival alloc] init];
             
             NSNumber *minutesUntilArrival = [self stringToInt:self.MUNIoutstring];
             
-            arrival.minutesUntilArrival = minutesUntilArrival;
-            arrival.stationType = StationTypeMUNI;
-            
-            [self.nextArrivals addObject:arrival];
+            if(minutesUntilArrival != nil){
+                arrival.minutesUntilArrival = minutesUntilArrival;
+                arrival.stationType = StationTypeMUNI;
+                
+                [self.nextArrivals addObject:arrival];
+            }
         }
         
         self.MUNIelementName = nil;
     }
-    
-    
 }
 
 
@@ -369,14 +335,7 @@
     if(!self.BARTisParsing && !self.MUNIisParsing){
         
         self.arrivals = self.nextArrivals;
-        
-        // sort that shit!
-        //    NSSortDescriptor *timeDescriptor =
-        //    [[NSSortDescriptor alloc] initWithKey:@"minutesUntilArrival"
-        //                                ascending:YES
-        //                                 selector:@selector(localizedCompare:)];
-        
-        //    [self.arrivals sortUsingDescriptors:@[timeDescriptor]];
+
         
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                             initWithKey:@"minutesUntilArrival"
