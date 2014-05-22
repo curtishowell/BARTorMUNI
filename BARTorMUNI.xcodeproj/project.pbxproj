@@ -10,6 +10,7 @@
 		32B01B509F8146A08A907085 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1875115F514C1089AA7199 /* libPods.a */; };
 		E6176267191D90AE00022675 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6176266191D90AE00022675 /* AboutViewController.m */; };
 		E6176269191DAD7300022675 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6176268191DAD7300022675 /* iAd.framework */; };
+		E65987111927DCF60072711F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E65987101927DCF60072711F /* CoreLocation.framework */; };
 		FF31CD74190339E40064BC58 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF31CD73190339E40064BC58 /* Stations.plist */; };
 		FF31CD771906331D0064BC58 /* Arrival.m in Sources */ = {isa = PBXBuildFile; fileRef = FF31CD761906331D0064BC58 /* Arrival.m */; };
 		FFF69DB418DFAE9900A5A80D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF69DB318DFAE9900A5A80D /* Foundation.framework */; };
@@ -49,6 +50,7 @@
 		E6176265191D90AE00022675 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		E6176266191D90AE00022675 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		E6176268191DAD7300022675 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		E65987101927DCF60072711F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FF1875115F514C1089AA7199 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF31CD73190339E40064BC58 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		FF31CD751906331D0064BC58 /* Arrival.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrival.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E65987111927DCF60072711F /* CoreLocation.framework in Frameworks */,
 				E6176269191DAD7300022675 /* iAd.framework in Frameworks */,
 				FFF69DB618DFAE9900A5A80D /* CoreGraphics.framework in Frameworks */,
 				FFF69DB818DFAE9900A5A80D /* UIKit.framework in Frameworks */,
@@ -132,6 +135,7 @@
 		FFF69DB218DFAE9900A5A80D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E65987101927DCF60072711F /* CoreLocation.framework */,
 				E6176268191DAD7300022675 /* iAd.framework */,
 				FFF69DB318DFAE9900A5A80D /* Foundation.framework */,
 				FFF69DB518DFAE9900A5A80D /* CoreGraphics.framework */,

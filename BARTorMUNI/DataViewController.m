@@ -17,6 +17,14 @@
 @property (strong, nonatomic) NSArray *arrivals;
 @property (strong, nonatomic) NSMutableArray *nextArrivals;
 @property (nonatomic) BOOL visible;
+@property (nonatomic) BOOL userPulledToRefresh;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) UIAlertView *alertView;
+@property (weak, nonatomic) IBOutlet UILabel *nearbyLabel;
+@property (nonatomic) BOOL readyToFetchData;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) Station *closestStation;
+@property (nonatomic) BOOL isNearbyStation;
 
 //XML parser
 @property(nonatomic, strong) NSString *BARTelementName;
@@ -46,20 +54,23 @@
                                                  name:@"directionChanged" object:nil];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.dataLabel.text = self.station.name;
+    
+    if(self.station.isNearbyStation){
+        self.nearbyLabel.hidden = NO;
+        self.readyToFetchData = NO;
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.delegate = self;
+        [self determineLocation];
+    } else {
+        self.readyToFetchData = YES;
+        self.stationName.text = self.station.name;
+    }
+    
+    self.isNearbyStation = self.station.isNearbyStation;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -77,31 +88,85 @@
     self.visible = NO;
 }
 
-
 - (void)directionChanged:(NSNotificationCenter *)center {
     if(self.visible){
         [self fetchNewData];
     }
 }
 
+#pragma mark - Location Services
+- (void)determineLocation
+{
+    [self.locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    //250 meters should be enough accuracy to determine the closes station
+	if(newLocation.horizontalAccuracy < 250){
+        //TODO: determine closes station and show that data!
+        
+        self.closestStation = self.stations[1];
+        CLLocationDistance closestStationDistance = [newLocation distanceFromLocation:self.closestStation.location];
+        
+        for(int i = 2; i < [self.stations count]; i++){
+            Station *station = self.stations[i];
+            CLLocationDistance distance = [newLocation distanceFromLocation:station.location];
+            if(distance < closestStationDistance){
+                self.closestStation = station;
+                closestStationDistance = distance;
+            }
+        }
+        
+        [self.locationManager stopUpdatingLocation];
+        
+        self.stationName.text = self.closestStation.name;
+        self.readyToFetchData = YES;
+        [self fetchNewData];
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error
+{
+    //TODO: test what happens when there is an error. Does the location manager be restarted?
+	return;
+}
+
 - (void)updatePageControl
 {
     self.pageControl.currentPage = [self.station.stationIndex integerValue];
-    if([self.station.stationIndex integerValue] == 0) {
-        [self.pageControlNearby setHidden:NO];
-    } else if (!self.pageControlNearby.hidden) {
-        [self.pageControlNearby setHidden:YES];
-    }
+//    if([self.station.stationIndex integerValue] == 0) {
+//        [self.pageControlNearby setHidden:NO];
+//    } else if (!self.pageControlNearby.hidden) {
+//        [self.pageControlNearby setHidden:YES];
+//    }
 }
 
 //pull to refresh control
 - (void)refresh:(UIRefreshControl *)refreshControl {
-    [refreshControl endRefreshing];
-    
     //only refresh if the data is not already being refreshed
     if([self.arrivals count] > 0){
-        [self fetchNewData];
+        self.userPulledToRefresh = YES;
+        self.refreshControl = refreshControl;
+        
+        //if nearby station, refetch location
+        if(self.isNearbyStation){
+            [self determineLocation];
+        } else {
+            [self fetchNewData];
+        }
+        
+    } else {
+        [refreshControl endRefreshing];
     }
+}
+
+- (Station *)getCorrectStation
+{
+    return self.isNearbyStation ? self.closestStation : self.station;
 }
 
 #pragma mark - table view
@@ -162,9 +227,17 @@
 
 - (void)fetchNewData {
     
+    if(!self.readyToFetchData){
+        return;
+    }
+    
     self.nextArrivals = [NSMutableArray array];
-    self.arrivals = [NSArray array];
-    [self.tableView reloadData];
+    
+    //if the user did not pull to refresh, replace the data with an activity indicator
+    if(!self.userPulledToRefresh){
+//        self.arrivals = [NSArray array];
+        [self.tableView reloadData];
+    }
     
     BOOL inbound = [(AppDelegate *)([[UIApplication sharedApplication] delegate]) inbound];
     
@@ -182,7 +255,7 @@
     self.BARTisParsing = YES;
     
     NSString *inboundIdentifier = inbound ? @"n" : @"s";
-    NSString *URLString = [NSString stringWithFormat:@"http://api.bart.gov/api/etd.aspx?key=MW9S-E7SL-26DU-VV8V&cmd=etd&orig=%@&dir=%@", self.station.BARTkey, inboundIdentifier];
+    NSString *URLString = [NSString stringWithFormat:@"http://api.bart.gov/api/etd.aspx?key=MW9S-E7SL-26DU-VV8V&cmd=etd&orig=%@&dir=%@", [self getCorrectStation].BARTkey, inboundIdentifier];
     
     NSURL *url = [NSURL URLWithString:URLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -203,12 +276,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving BART arrivals"
-                                                            message:[error localizedDescription]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        [self showNetworkError];
         
     }];
     
@@ -219,7 +287,7 @@
     
     self.MUNIisParsing = YES;
 
-    NSString *stopCode = inbound ? self.station.MUNIinbound : self.station.MUNIoutbound;
+    NSString *stopCode = inbound ? [self getCorrectStation].MUNIinbound : [self getCorrectStation].MUNIoutbound;
     
     NSString *URLString = [NSString stringWithFormat:@"http://services.my511.org/Transit2.0/GetNextDeparturesByStopCode.aspx?token=20e036b6-089b-4b2f-bed7-303d1466d7e8&stopcode=%@", stopCode];
     
@@ -242,12 +310,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving BART arrivals"
-                                                            message:[error localizedDescription]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        [self showNetworkError];
         
     }];
     
@@ -273,7 +336,6 @@
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-
     
     if(parser == self.BARTparser) {
         if (!self.BARTelementName)
@@ -334,6 +396,8 @@
     //both are done parsing, update the table view
     if(!self.BARTisParsing && !self.MUNIisParsing){
         
+        
+        
         self.arrivals = self.nextArrivals;
 
         
@@ -346,9 +410,39 @@
         
         
         [self.tableView reloadData];
+        
+        if(self.userPulledToRefresh){
+            [self.refreshControl endRefreshing];
+            self.userPulledToRefresh = NO;
+        }
     }
 
 }
+
+#pragma mark - Network Failure Alert View
+
+- (void)showNetworkError
+{
+    //if the alert view is not already showing
+    if(!self.alertView){
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Shucks"
+                                                    message:@"We couldn't connect to BART and/or MUNI"
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Try Again", nil];
+        self.alertView.delegate = self;
+        [self.alertView show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    //user wants to try again, yay
+    if(buttonIndex == 0){
+        [self fetchNewData];
+    }
+    self.alertView = nil;
+}
+
 
 #pragma mark - Utilities
 -(NSNumber *)stringToInt:(NSString *)inputString {

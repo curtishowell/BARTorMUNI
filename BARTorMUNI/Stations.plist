@@ -11,6 +11,10 @@
 		<string>15727</string>
 		<key>BART_key</key>
 		<string>CIVC</string>
+		<key>latitude</key>
+		<real>37.779528</real>
+		<key>longitude</key>
+		<real>-122.413756</real>
 	</dict>
 	<dict>
 		<key>Station_name</key>
@@ -21,6 +25,10 @@
 		<string>15417</string>
 		<key>BART_key</key>
 		<string>POWL</string>
+		<key>latitude</key>
+		<real>37.784991</real>
+		<key>longitude</key>
+		<real>-122.406857</real>
 	</dict>
 	<dict>
 		<key>Station_name</key>
@@ -31,6 +39,10 @@
 		<string>15731</string>
 		<key>BART_key</key>
 		<string>MONT</string>
+		<key>latitude</key>
+		<real>37.789256</real>
+		<key>longitude</key>
+		<real>-122.401407</real>
 	</dict>
 	<dict>
 		<key>Station_name</key>
@@ -41,6 +53,10 @@
 		<string>16992</string>
 		<key>BART_key</key>
 		<string>EMBR</string>
+		<key>latitude</key>
+		<real>37.792976</real>
+		<key>longitude</key>
+		<real>-122.396742</real>
 	</dict>
 </array>
 </plist>

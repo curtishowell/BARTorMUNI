@@ -20,7 +20,7 @@
  */
 
 @interface ModelController()
-@property (readonly, strong, nonatomic) NSArray *pageData;
+@property (readonly, strong, nonatomic) NSArray *stations;
 @end
 
 @implementation ModelController
@@ -32,40 +32,44 @@
         NSArray *stations = [self readStations];
         NSMutableArray *stationBuildup = [[NSMutableArray alloc] init];
         
+        //add nearby station
+        Station *nearbyStation = [[Station alloc] init];
+        nearbyStation.stationIndex = [NSNumber numberWithInt:0];
+        nearbyStation.isNearbyStation = YES;
+        nearbyStation.name = @"Locating";
+        [stationBuildup addObject:nearbyStation];
+        
         for(int i = 0; i < [stations count]; i ++) {
             NSDictionary *station = stations[i];
             Station *s = [[Station alloc] init];
-            s.stationIndex = [NSNumber numberWithInteger:i];
+            s.stationIndex = [NSNumber numberWithInteger:i + 1];
             s.name = [station objectForKey:@"Station_name"];
             s.BARTkey = [station objectForKey:@"BART_key"];
             s.MUNIinbound = [station objectForKey:@"MUNI_inbound"];
             s.MUNIoutbound = [station objectForKey:@"MUNI_outbound"];
+            s.location = [[CLLocation alloc] initWithLatitude:[[station objectForKey:@"latitude"] doubleValue]
+                                                    longitude:[[station objectForKey:@"longitude"] doubleValue]];
+            s.isNearbyStation = NO;
             [stationBuildup addObject:s];
         }
 
-
-//        NSArray *stationNames = @[@"Nearby", @"Civic Center", @"Powell", @"Montgomery", @"Embarcadero"];
-//        for(int i = 0; i < [stationNames count]; i++){
-//            Station *s = [[Station alloc] init];
-//            s.name = stationNames[i];
-//            s.stationIndex = [NSNumber numberWithInt:i];
-//            [stationBuildup addObject:s];
-//        }
-        _pageData = stationBuildup;
+        _stations = stationBuildup;
     }
     return self;
 }
 
-- (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard
+- (DataViewController *)viewControllerAtIndex:(NSUInteger)index
+                                   storyboard:(UIStoryboard *)storyboard
 {
     // Return the data view controller for the given index.
-    if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
+    if (([self.stations count] == 0) || (index >= [self.stations count])) {
         return nil;
     }
     
     // Create a new view controller and pass suitable data.
     DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"DataViewController"];
-    dataViewController.station = self.pageData[index];
+    dataViewController.station = self.stations[index];
+    dataViewController.stations = self.stations;
     dataViewController.pageControl = self.pageControl;
     dataViewController.pageControlNearby = self.pageControlNearby;
     
@@ -74,15 +78,13 @@
 
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController
 {
-    // Return the index of the given data view controller.
-    // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-    return [self.pageData indexOfObject:viewController.station];
-    //TODO: can just return index form dataObject instead of looking up index in array
+    return [viewController.station.stationIndex integerValue];
 }
 
 #pragma mark - Page View Controller Data Source
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     if ((index == 0) || (index == NSNotFound)) {
@@ -93,7 +95,8 @@
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController
 {
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     if (index == NSNotFound) {
@@ -101,15 +104,18 @@
     }
     
     index++;
-    if (index == [self.pageData count]) {
+    if (index == [self.stations count]) {
         return nil;
     }
-    return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+    return [self viewControllerAtIndex:index
+                            storyboard:viewController.storyboard];
 }
 
 - (NSArray *)readStations
 {
-    NSArray *stations = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"]];
+    NSArray *stations = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]
+                                                          pathForResource:@"Stations"
+                                                          ofType:@"plist"]];
     
 //    NSLog(@"%@",stations);
 //    

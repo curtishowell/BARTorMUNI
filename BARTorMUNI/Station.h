@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Station : NSObject
 
@@ -15,5 +16,7 @@
 @property (strong, nonatomic) NSString *BARTkey;
 @property (strong, nonatomic) NSString *MUNIoutbound;
 @property (strong, nonatomic) NSString *MUNIinbound;
+@property (strong, nonatomic) CLLocation *location;
+@property (nonatomic) BOOL isNearbyStation;
 
 @end

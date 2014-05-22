@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Station.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface DataViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, NSXMLParserDelegate>
+@interface DataViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, NSXMLParserDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *dataLabel;
-//@property (strong, nonatomic) Station *dataObject;
 @property (weak, nonatomic) UIPageControl *pageControl;
 @property (weak, nonatomic) UIImageView *pageControlNearby;
 @property (strong, nonatomic) Station *station;
-
-//TODO get rid of dataObject; station is alreay here
+@property (strong, nonatomic) IBOutlet UILabel *stationName;
+@property (strong, nonatomic) NSArray *stations;
 
 @end
