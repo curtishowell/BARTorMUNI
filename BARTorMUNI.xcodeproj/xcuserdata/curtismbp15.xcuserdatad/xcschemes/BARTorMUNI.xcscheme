@@ -91,6 +91,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "BARTorMUNI"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

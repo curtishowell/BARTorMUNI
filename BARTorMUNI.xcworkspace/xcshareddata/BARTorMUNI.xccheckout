@@ -10,29 +10,29 @@
 	<string>BARTorMUNI</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>15EFFED8-FD70-48E5-B165-A1330B5E8F38</key>
+		<key>F2BD756D15660D6DEB0BA2C81302475FFBDB2CDB</key>
 		<string>https://github.com/curtishowell/BARTorMUNI.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>BARTorMUNI.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>15EFFED8-FD70-48E5-B165-A1330B5E8F38</key>
+		<key>F2BD756D15660D6DEB0BA2C81302475FFBDB2CDB</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/curtishowell/BARTorMUNI.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>15EFFED8-FD70-48E5-B165-A1330B5E8F38</string>
+	<string>F2BD756D15660D6DEB0BA2C81302475FFBDB2CDB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>15EFFED8-FD70-48E5-B165-A1330B5E8F38</string>
+			<string>F2BD756D15660D6DEB0BA2C81302475FFBDB2CDB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BARTorMUNI</string>
 		</dict>

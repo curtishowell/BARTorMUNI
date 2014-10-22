@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL inbound;
 @property (weak, nonatomic) IBOutlet UIButton *inboundButton;
 @property (weak, nonatomic) IBOutlet UIButton *outboundButton;
+@property (strong, nonatomic) UIView *arrowView;
 
 @end
 
@@ -58,6 +59,53 @@
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
     self.inbound = YES;
+    
+    [super viewDidLoad];
+    
+    CGFloat arrowWidth = 50.0;
+    CGFloat arrowHeight = 5;
+    CGFloat pointyWidth = 10.0;
+    CGFloat pointyHeight = 5.0;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat outsideMargin = 20.0;
+    CGFloat topMargin = 110.0;
+    
+    //line
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(outsideMargin, topMargin)];
+    [linePath addLineToPoint:CGPointMake(screenWidth - outsideMargin, topMargin)];
+    CAShapeLayer *lineLayer = [CAShapeLayer layer];
+    lineLayer.path = [linePath CGPath];
+    lineLayer.strokeColor = [[UIColor whiteColor] CGColor];
+    lineLayer.lineWidth = 2.0;
+    lineLayer.fillColor = [[UIColor clearColor] CGColor];
+    [self.view.layer addSublayer:lineLayer];
+    
+    //direction indicator
+    if(!self.arrowView) {
+        self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(outsideMargin, topMargin, pointyWidth, arrowHeight + pointyHeight)];
+    }
+    
+    UIBezierPath *arrowPath = [UIBezierPath bezierPath];
+    [arrowPath moveToPoint:CGPointMake(0.0, 0.0)];
+    [arrowPath addLineToPoint:CGPointMake(0.0, arrowHeight)];
+    [arrowPath addLineToPoint:CGPointMake(arrowWidth / 2 - pointyWidth / 2, arrowHeight)];
+    [arrowPath addLineToPoint:CGPointMake(arrowWidth / 2, arrowHeight + pointyHeight)];
+    [arrowPath addLineToPoint:CGPointMake(arrowWidth / 2 + pointyWidth / 2, arrowHeight)];
+    [arrowPath addLineToPoint:CGPointMake(arrowWidth, arrowHeight)];
+    [arrowPath addLineToPoint:CGPointMake(arrowWidth, 0.0)];
+    [arrowPath closePath];
+    
+    
+    CAShapeLayer *arrowLayer = [CAShapeLayer layer];
+    arrowLayer.path = [arrowPath CGPath];
+    arrowLayer.strokeColor = [[UIColor whiteColor] CGColor];
+    arrowLayer.lineWidth = 2.0;
+    arrowLayer.fillColor = [[UIColor whiteColor] CGColor];
+    //    [self.view.layer addSublayer:arrowLayer];
+    [self.arrowView.layer addSublayer:arrowLayer];
+    [self.view addSubview:self.arrowView];
+    
     [self setupArrow];
     
 }
@@ -74,10 +122,9 @@
 - (void)setupArrow
 {
     if(self.inbound){
-        self.inboundButton.selected = YES;
+        [self inboundPressed:nil];
     } else {
-        self.outboundButton.selected = YES;
-        [self rotateArrow:M_PI];
+        [self outboundPressed:nil];
     }
     
 }
@@ -121,27 +168,34 @@
 }
 
 - (IBAction)inboundPressed:(id)sender {
-    if(!self.inbound) {
-        [self rotateArrow:0];
-        self.inboundButton.selected = YES;
-        self.outboundButton.selected = NO;
-        
-    }
+    
+    CGFloat arrowWidth = 50.0;
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat outsideMargin = 20.0;
+
+    [self moveArrow:screenWidth - outsideMargin - arrowWidth];
+
 }
 
 - (IBAction)outboundPressed:(id)sender {
-    if(self.inbound) {
-        [self rotateArrow:M_PI];
-        self.inboundButton.selected = NO;
-        self.outboundButton.selected = YES;
-    }
+    
+    CGFloat outsideMargin = 20.0;
+    
+    [self moveArrow:outsideMargin];
+
 }
 
-- (void)rotateArrow:(CGFloat)rotation {
+- (void)moveArrow:(CGFloat)xPosition {
     self.inbound = !self.inbound;
+    
+    CGFloat arrowWidth = 50.0;
+    CGFloat arrowHeight = 5;
+    CGFloat pointyHeight = 5.0;
+    CGFloat topMargin = 110.0;
+    
     [UIView animateWithDuration:ARROW_ANIMATION_DURATION
                      animations:^{
-                         self.directionArrow.transform = CGAffineTransformMakeRotation(rotation);
+                         self.arrowView.frame = CGRectMake(xPosition, topMargin, arrowWidth, arrowHeight + pointyHeight);
                      }];
 }
 

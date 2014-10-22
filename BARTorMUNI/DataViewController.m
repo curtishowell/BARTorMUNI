@@ -62,6 +62,7 @@
         self.nearbyLabel.hidden = NO;
         self.readyToFetchData = NO;
         self.locationManager = [[CLLocationManager alloc] init];
+        [self.locationManager requestWhenInUseAuthorization];
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         self.locationManager.delegate = self;
         [self determineLocation];
@@ -75,8 +76,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.visible = YES;
     [super viewDidAppear:animated];
+    self.visible = YES;
     [self updatePageControl];
     
     [self fetchNewData];
@@ -138,11 +139,11 @@
 - (void)updatePageControl
 {
     self.pageControl.currentPage = [self.station.stationIndex integerValue];
-//    if([self.station.stationIndex integerValue] == 0) {
-//        [self.pageControlNearby setHidden:NO];
-//    } else if (!self.pageControlNearby.hidden) {
-//        [self.pageControlNearby setHidden:YES];
-//    }
+    if([self.station.stationIndex integerValue] == 0) {
+        [self.pageControlNearby setHidden:NO];
+    } else if (!self.pageControlNearby.hidden) {
+        [self.pageControlNearby setHidden:YES];
+    }
 }
 
 //pull to refresh control
